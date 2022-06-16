@@ -48,3 +48,7 @@ create Table Espochifai.Reproduccion(
         REFERENCES Espochifai.Cancion (idCancion)
 );
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
