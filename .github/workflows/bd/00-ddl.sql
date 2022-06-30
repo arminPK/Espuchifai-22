@@ -8,8 +8,7 @@ create table Espochifai.Banda(
     fundacion DATE not null,
     PRIMARY KEY (idBanda),
     CONSTRAINT FK_Banda_Album FOREIGN KEY (idAlbum)
-        REFERENCES Espochifai.Album (idAlbum),
-    CONSTRAINT UQ_Banda_nombre UNIQUE (nombre)
+        REFERENCES Espochifai.Album (idAlbum)
 );
 create Table Espochifai.Album(
     idAlbum TINYINT NOT NULL,
@@ -18,15 +17,13 @@ create Table Espochifai.Album(
     lanzamiento DATE NOT NULL,
     PRIMARY KEY (idAlbum),
     CONSTRAINT FK_Album_Cancion FOREIGN KEY (idCancion)
-        REFERENCES Espochifai.Cancion (idCancion),
-    CONSTRAINT UQ_Album_nombre UNIQUE (nombre)
+        REFERENCES Espochifai.Cancion (idCancion)
 );
 create Table Espochifai.Cancion(
     idCancion TINYINT NOT NULL,
     nombre VARCHAR(45) not NULL,
     numero_ord INT not NULL,
-    PRIMARY KEY (idCancion),
-    CONSTRAINT UQ_Cancion_nombre UNIQUE (nombre)
+    PRIMARY KEY (idCancion)
 );
 create Table Espochifai.Cliente(
     idCliente SMALLINT not null,
