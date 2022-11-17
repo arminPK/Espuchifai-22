@@ -35,13 +35,19 @@ END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS Reproducir $$
-CREATE PROCEDURE Reproducir ( unareproduccion DATETIME, unidCancion INT UNSIGNED, unidUsuario SMALLINT UNSIGNED)
+CREATE PROCEDURE Reproducir ( unareproduccion DATETIME, unidCancion INT UNSIGNED, unidCliente SMALLINT UNSIGNED)
 BEGIN
-    INSERT INTO Reproduccion ( reproduccion, idCancion, idUsuario)
-    VALUES ( unareproduccion, unidCancion, unidUsuario);
+    INSERT INTO Reproduccion ( reproduccion, idCancion, idCliente)
+    VALUES ( unareproduccion, unidCancion, unidCliente);
 END $$
 -- Se pide hacer el SP ‘registrarCliente’ que reciba los datos del cliente. Es importante guardar encriptada la contraseña del cliente usando SHA256.
-
+DELIMITER $$
+DROP PROCEDURE IF EXISTS registrarCliente $$
+CREATE PROCEDURE registrarCliente (unNombre VARCHAR(45), unApellido VARCHAR (45), unEmail VARCHAR(45), unaContrasenia CHAR(64), unidCliente SMALLINT UNSIGNED) 
+BEGIN
+    INSERT INTO Usuario (nombre, apellido, email, contrasenia, idCliente)
+    VALUES (unNombre, unApellido, unEmail, SHA2 (unaContrasenia, 256), unidCliente);
+END $$
 -- Se pide hacer el SF ‘CantidadReproduccionesBanda’ que reciba por parámetro un identificador de banda y 2 fechas, se debe devolver la cantidad de 
 -- reproducciones que tuvieron las canciones de esa banda entre esas 2 fechas (inclusive).
 
