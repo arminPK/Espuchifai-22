@@ -50,5 +50,26 @@ BEGIN
 END $$
 -- Se pide hacer el SF ‘CantidadReproduccionesBanda’ que reciba por parámetro un identificador de banda y 2 fechas, se debe devolver la cantidad de 
 -- reproducciones que tuvieron las canciones de esa banda entre esas 2 fechas (inclusive).
-
+DELIMITER $$
+DROP FUNCTION IF EXISTS CantidadReproduccionesBanda $$
+CREATE FUNCTION CantidadReproduccionesBanda (unidBanda SMALLINT UNSIGNED , unInicio DATETIME , unFin  DATETIME)
+BEGIN
+       DECLARE resultado DATETIME
+       SELECT COUNT(*) INTO resultado
+       FROM Reproduccion
+       INNER JOIN Cancion USING(idCancion)
+       INNER JOIN Album USING(idAlbum)
+       WHERE idBanda = unidBanda
+       AND reproduccion BETWEEN unInicio and unFin;
+       RETURN resultado ;
+END $$
 -- Se pide hacer el SP ‘Buscar’ que reciba por parámetro una cadena. El SP tiene que devolver las canciones que contengan la cadena en su título, nombre de álbum o nombre de banda
+DELIMITER $$
+DROP PROCEDURE IF EXISTS Buscar $$
+CREATE PROCEDURE Buscar (cadena VARCHAR(45))
+BEGIN
+       SELECT C.nombre , orden , C.idAlbum, C.idCancion
+       FROM Cancion C
+       JOIN Album USING (idAlbum)
+       WHERE MATCH (C.nombre, A.nombre, B.nombre) AGAINST (cadena);
+END $$
