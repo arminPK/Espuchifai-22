@@ -1,8 +1,5 @@
 USE Espuchifai ;
-
 SELECT 'Triggers' Estado ;
-
-
 
 /* 1) Cada vez que se inserta una reproducción, se incrementa el contador de reproducciones de la canción en uno.*/
 

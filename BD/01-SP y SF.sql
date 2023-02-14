@@ -1,5 +1,7 @@
 -- Realizar los SP para dar de alta todas las entidades menos las tablas Cliente y Reproducción. En la tabla reproducción el SP se debe llamar ‘Reproducir’.
 USE Espuchifai ;
+SELECT 'Creando SP y FS' Estado;
+
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaBanda $$
 CREATE PROCEDURE altaBanda (unnombre VARCHAR(45),unafundacion YEAR,OUT unidBanda SMALLINT UNSIGNED)
