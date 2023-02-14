@@ -5,5 +5,5 @@ GRANT INSERT,SELECT ON Espuchifai.Banda TO Banda;
 GRANT INSERT,SELECT ON Espuchifai.Album TO Banda;
 GRANT INSERT,SELECT ON Espuchifai.Cancion TO Banda;
 CREATE USER IF NOT EXISTS Cliente@% IDENTIFIED BY '123456';
-GRANT SELECT ON Espuchifai. TO Cliente;
+GRANT SELECT ON Espuchifai.* TO Cliente;
 GRANT INSEERT,SELECT,DELETE ON Espuchifai.Reproduccion TO Cliente;
