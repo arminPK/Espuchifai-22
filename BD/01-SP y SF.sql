@@ -37,7 +37,7 @@ VALUES (unareproduccion,unidCancion,unidCliente);
 END $$
 
 -- 2) Se pide hacer el SP ‘registrarCliente’ que reciba los datos del cliente. Es importante guardar encriptada la contraseña del cliente usando SHA256
-
+contrasenia
 DELIMITER $$
 DROP PROCEDURE IF EXISTS registrarCliente $$
 CREATE PROCEDURE registrarCliente   (unNombre VARCHAR(45), unApellido VARCHAR (45), unEmail VARCHAR(45), unaContrasenia VARCHAR(45), OUT unidCliente SMALLINT UNSIGNED)
