@@ -1,5 +1,4 @@
 DROP DATABASE IF EXISTS Espuchifai;
-SELECT 'Creando bd' Estado;
 
 CREATE DATABASE Espuchifai;
 
