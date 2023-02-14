@@ -18,41 +18,41 @@ INSERT INTO Album (nombre,lanzamiento,idBanda,idAlbum,cantidad)
 VALUES (unnombre,unlanzamiento,unidBanda,unidAlbum,0);
 SET unidAlbum = LAST_INSERT_ID();
 END $$ 
-
+posicion
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaCancion $$
-CREATE PROCEDURE altaCancion (unnombre VARCHAR(45),unorden TINYINT UNSIGNED,unidAlbum MEDIUMINT UNSIGNED,OUT unidCancion INT UNSIGNED) 
+CREATE PROCEDURE altaCancion (unnombre VARCHAR(45),unposicion TINYINT UNSIGNED,unidAlbum MEDIUMINT UNSIGNED,OUT unidCancion INT UNSIGNED) 
 BEGIN
-INSERT INTO Cancion (nombre,orden,idAlbum,idCancion,cantidad)
-VALUES (unnombre,unorden,unidAlbum,unidCancion,0);
+INSERT INTO Cancion (nombre,posicion,idAlbum,idCancion,cantidad)
+VALUES (unnombre,unposicion,unidAlbum,unidCancion,0);
 SET unidCancion = LAST_INSERT_ID();
 END $$ 
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS Reproducir $$
-CREATE PROCEDURE Reproducir (unareproduccion DATETIME, unidCancion INT UNSIGNED,unidUsuario SMALLINT UNSIGNED) 
+CREATE PROCEDURE Reproducir (unareproduccion DATETIME, unidCancion INT UNSIGNED,unidCliente SMALLINT UNSIGNED) 
 BEGIN
-INSERT INTO Reproduccion (reproduccion,idCancion,idUsuario)
-VALUES (unareproduccion,unidCancion,unidUsuario);
+INSERT INTO Reproduccion (reproduccion,idCancion,idCliente)
+VALUES (unareproduccion,unidCancion,unidCliente);
 END $$
 
 -- 2) Se pide hacer el SP ‘registrarCliente’ que reciba los datos del cliente. Es importante guardar encriptada la contraseña del cliente usando SHA256
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS registrarCliente $$
-CREATE PROCEDURE registrarCliente   (unNombre VARCHAR(45), unApellido VARCHAR (45), unEmail VARCHAR(45), unaContrasenia VARCHAR(45), OUT unidUsuario SMALLINT UNSIGNED)
+CREATE PROCEDURE registrarCliente   (unNombre VARCHAR(45), unApellido VARCHAR (45), unEmail VARCHAR(45), unaContrasenia VARCHAR(45), OUT unidCliente SMALLINT UNSIGNED)
 BEGIN
-INSERT INTO Usuario (nombre,apellido,email,contrasenia,idUsuario)
-VALUES (unNombre, unApellido, unEmail, SHA2(unaContrasenia, 256), unidUsuario);
-SET unidUsuario = LAST_INSERT_ID();
+INSERT INTO Cliente (nombre,apellido,email,contrasenia,idCliente)
+VALUES (unNombre, unApellido, unEmail, SHA2(unaContrasenia, 256), unidCliente);
+SET unidCliente = LAST_INSERT_ID();
 END$$
 
 DELIMITER $$
-DROP PROCEDURE IF EXISTS ObtenerUsuarios $$
-CREATE PROCEDURE ObtenerUsuarios(nombre VARCHAR(45),apellido VARCHAR(45),idUsuario SMALLINT UNSIGNED,contrasenia CHAR(64),email VARCHAR(45))
+DROP PROCEDURE IF EXISTS ObtenerClientes $$
+CREATE PROCEDURE ObtenerClientes(nombre VARCHAR(45),apellido VARCHAR(45),idCliente SMALLINT UNSIGNED,contrasenia CHAR(64),email VARCHAR(45))
 BEGIN
-    SELECT u.contrania,u.email,u.nombre,u.apellido,u.idUsuario
-    FROM Usuario u
+    SELECT u.contrania,u.email,u.nombre,u.apellido,u.idCliente
+    FROM Cliente u
     WHERE contrasenia = SHA2(unaContrasenia, 256)
     AND email = unEmail;
 END $$ 
@@ -83,7 +83,7 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS Buscar $$
 CREATE PROCEDURE Buscar (cadena VARCHAR(45)) BEGIN
-SELECT C.nombre,orden,C.idAlbum,C.idCancion
+SELECT C.nombre,posicion,C.idAlbum,C.idCancion
 FROM Cancion C
 JOIN Album USING (idAlbum)
 WHERE

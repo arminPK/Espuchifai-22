@@ -3,7 +3,6 @@ USE Espuchifai ;
 /* 1) Cada vez que se inserta una reproducción, se incrementa el contador de reproducciones de la canción en uno.*/
 
 DELIMITER $$
-
 DROP TRIGGER IF EXISTS AftInsReproduccion $$
 CREATE TRIGGER AftInsReproduccion AFTER
 INSERT ON Reproduccion FOR EACH ROW BEGIN
