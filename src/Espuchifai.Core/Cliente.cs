@@ -15,7 +15,7 @@ namespace Espuchifai.Core
         public Cliente(int idCliente, string Nombre, string Apellido, string Email, string Contrasenia)
         {
             this.idcliente=idCliente;
-            this.nombre=Nomnre;
+            this.nombre=Nombre;
             this.apellido=Apellido;
             this.email=Email;
             this.contrasenia=Contrasenia;

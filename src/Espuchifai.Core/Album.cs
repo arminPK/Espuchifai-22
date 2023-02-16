@@ -9,7 +9,7 @@ namespace Espuchifai.Core
     {
         public int idalbum { get; set; }
         public int idbanda { get; set; }
-        public string Nombre { get; set; }
+        public string Nombre{ get; set; }
         public DateTime Lanzamiento { get; set; }
         piblic Album(int idAlbum, int idBanda, string nombre,DateTime lanzamiento)
         {

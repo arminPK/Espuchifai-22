@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Espuchifai.Core
 {
-    public class Reproducir
+    public class Reproduccion
     {
         public int idcliente{get; set;}
         public int idcancion{get; set;}
