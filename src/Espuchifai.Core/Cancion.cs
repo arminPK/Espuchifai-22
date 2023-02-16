@@ -18,7 +18,7 @@ namespace Espuchifai.Core
             this.idcancion=idCancion;
             this.Nombre=nombre;
             this.Posicion=posicion;
-            this.Cantidad=cantidad
+            this.Cantidad=cantidad;
         }
         
     }
