@@ -18,7 +18,6 @@ namespace Espuchifai.Core
             this.Nombre=nombre;
             this.Lanzamiento=lanzamiento;
         }
-        //hhhh
 
     }
 }
