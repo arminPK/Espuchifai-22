@@ -12,7 +12,7 @@ BEGIN
     WHERE idCancion = new.idCancion;
 END $$
 
--- 2) Cada vez que se actualiza el contador de la caanción en N reproducciones, se incrementa el contador del álbum también en N.
+-- 2) Cada vez que se actualiza el contador de la canción en N reproducciones, se incrementa el contador del álbum también en N.
 
 DELIMITER $$
 
