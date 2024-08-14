@@ -1,8 +1,22 @@
-DROP DATABASE IF EXISTS Espuchifai;
+-- Active: 1646654372192@@127.0.0.1@3306@Eespuchifai
+
+DROP DATABASE IF EXISTS Eespuchifai;
 
 CREATE DATABASE Espuchifai;
 
-CREATE TABLE Espuchifai.Banda
+USE Espuchifai;
+
+CREATE TABLE Cliente
+(
+    idcliente INT NOT NULL,
+    nommbre VARCHAR(45) NOT NULL,
+    apellido VARCHAR(45) NOT NULL,
+    email VARCHAR(60) NOT NULL,
+    contraseña CHAR(64) NOT NULL,
+    PRIMARY KEY (idcliente)
+);
+
+CREATE TABLE Reproduccion
 (
     nombre VARCHAR(45) NOT NULL,
     fundacion YEAR NOT NULL,
