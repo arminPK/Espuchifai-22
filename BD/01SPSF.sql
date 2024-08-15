@@ -3,74 +3,61 @@ USE Espuchifai ;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaBanda $$
-CREATE PROCEDURE altaBanda (out unidbanda unnombre VARCHAR(45),unafundacion YEAR,OUT unidBanda SMALLINT UNSIGNED)
+CREATE PROCEDURE altaBanda (unidbanda SMALLINT UNSIGNED, unnombre VARCHAR(45), unafundacion YEAR)
 BEGIN
-INSERT INTO Banda (nombre, fundacion, idBanda)
-VALUES (unnombre,unafundacion,unidBanda);
-SET unidBanda = LAST_INSERT_ID();
+INSERT INTO Banda (idbanda,nombre,fundacion)
+VALUES (unidbanda,unnombre,unafundacion);
 END $$ 
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaAlbum $$
-CREATE PROCEDURE altaAlbum (unnombre VARCHAR(45),unlanzamiento DATE,unidBanda SMALLINT UNSIGNED,OUT unidAlbum MEDIUMINT UNSIGNED) 
+CREATE PROCEDURE altaAlbum (OUT unidalbum TINYINT UNSIGNED,unnombre VARCHAR(45),unlanzamiento DATE,unidbanda SMALLINT UNSIGNED) 
 BEGIN
-INSERT INTO Album (nombre,lanzamiento,idBanda,idAlbum,cantidad)
-VALUES (unnombre,unlanzamiento,unidBanda,unidAlbum,0);
+INSERT INTO Album (idalbum,nombre,lanzamiento,idbanda,cantidad)
+VALUES (unidalbum,unnombre,unlanzamiento,unidbanda,0);
 SET unidAlbum = LAST_INSERT_ID();
 END $$ 
-posicion
+    
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaCancion $$
-CREATE PROCEDURE altaCancion (unnombre VARCHAR(45),unposicion TINYINT UNSIGNED,unidAlbum MEDIUMINT UNSIGNED,OUT unidCancion INT UNSIGNED) 
+CREATE PROCEDURE altaCancion (unidcancion TINYINT UNSIGNED,unnombre VARCHAR(45),unnumorden INT UNSIGNED,unidalbum TINYINT UNSIGNED) 
 BEGIN
-INSERT INTO Cancion (nombre,posicion,idAlbum,idCancion,cantidad)
-VALUES (unnombre,unposicion,unidAlbum,unidCancion,0);
-SET unidCancion = LAST_INSERT_ID();
+INSERT INTO Cancion (idcancion,nombre,numorden,idalbum,cantidad)
+VALUES (unidcancion,unnombre,unnumorden,unidalbum,0);
 END $$ 
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS Reproducir $$
-CREATE PROCEDURE Reproducir (unareproduccion DATETIME, unidCancion INT UNSIGNED,unidCliente SMALLINT UNSIGNED) 
+CREATE PROCEDURE Reproducir (unidreproduccion INT UNSIGNED,unidcliente INT UNSIGNED,unidcancion TINYINT UNSIGNED,unmomreproduccion DATETIME) 
 BEGIN
-INSERT INTO Reproduccion (reproduccion,idCancion,idCliente)
-VALUES (unareproduccion,unidCancion,unidCliente);
+INSERT INTO Reproduccion (idreproduccion,idcliente,idcancion,momreproduccion)
+VALUES (unidreproduccion,unidcliente,unidCancion,unmomreproduccion);
 END $$
 
 -- 2) Se pide hacer el SP ‘registrarCliente’ que reciba los datos del cliente. Es importante guardar encriptada la contraseña del cliente usando SHA256
 contrasenia
 DELIMITER $$
 DROP PROCEDURE IF EXISTS registrarCliente $$
-CREATE PROCEDURE registrarCliente   (unNombre VARCHAR(45), unApellido VARCHAR (45), unEmail VARCHAR(45), unaContrasenia VARCHAR(45), OUT unidCliente SMALLINT UNSIGNED)
+CREATE PROCEDURE registrarCliente   (unidcliente INT UNSIGNED,unmombre VARCHAR(45), unapellido VARCHAR(45), unemail VARCHAR(45), unacontrasenia CHAR(60))
 BEGIN
-INSERT INTO Cliente (nombre,apellido,email,contrasenia,idCliente)
-VALUES (unNombre, unApellido, unEmail, SHA2(unaContrasenia, 256), unidCliente);
-SET unidCliente = LAST_INSERT_ID();
-END$$
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS ObtenerClientes $$
-CREATE PROCEDURE ObtenerClientes(nombre VARCHAR(45),apellido VARCHAR(45),idCliente SMALLINT UNSIGNED,contrasenia CHAR(64),email VARCHAR(45))
-BEGIN
-    SELECT u.contrania,u.email,u.nombre,u.apellido,u.idCliente
-    FROM Cliente u
-    WHERE contrasenia = SHA2(unaContrasenia, 256)
-    AND email = unEmail;
-END $$ 
-
+INSERT INTO Cliente (idcliente,nombre,apellido,email,contrasenia)
+VALUES (unidcliente,unnombre,unapellido,unemail,SHA2(unaContrasenia,256));
+END $$
+    
 -- 3) Se pide hacer el SF ‘CantidadReproduccionesBanda’ que reciba por parámetro un identificador de banda y 2 fechas,se debe devolver la cantidad de reproducciones que tuvieron las canciones de esa banda entre esas 2 fechas (inclusive).
 
 DELIMITER $$
 
 DROP FUNCTION IF EXISTS CantidadReproduccionesBanda $$
-CREATE FUNCTION CantidadReproduccionesBanda (unidBanda SMALLINT UNSIGNED,unInicio DATETIME,unFin DATETIME) RETURNS DATETIME reads sql data 
+CREATE FUNCTION CantidadReproduccionesBanda (unidbanda SMALLINT UNSIGNED,uninicio DATETIME,unfin DATETIME) RETURNS INT reads sql data 
 BEGIN 
-DECLARE resultado DATETIME;
+DECLARE resultado INT;
 
 SELECT COUNT(*) INTO resultado
 FROM Reproduccion
-    INNER JOIN Cancion USING(idCancion)
-    INNER JOIN Album USING(idAlbum)
-WHERE idBanda = unidBanda
+    INNER JOIN Cancion USING(idcancion)
+    INNER JOIN Album USING(idalbum)
+WHERE idbanda = unidbanda
 AND reproduccion BETWEEN unInicio and unFin;
 
 RETURN resultado ;
