@@ -12,7 +12,7 @@ CREATE TABLE Cliente
     nommbre VARCHAR(45) NOT NULL,
     apellido VARCHAR(45) NOT NULL,
     email VARCHAR(60) NOT NULL,
-    contraseña CHAR(64) NOT NULL,
+    contrasenia CHAR(64) NOT NULL,
     PRIMARY KEY (idcliente)
 );
 
