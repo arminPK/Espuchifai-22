@@ -30,7 +30,7 @@ DROP PROCEDURE IF EXISTS Reproducir $$
 CREATE PROCEDURE Reproducir (unidreproduccion INT UNSIGNED,unidcliente INT UNSIGNED,unidcancion TINYINT UNSIGNED,unmomreproduccion DATETIME) 
 BEGIN
 INSERT INTO Reproduccion (idreproduccion,idcliente,idcancion,momreproduccion)
-VALUES (unidreproduccion,unidcliente,unidCancion,unmomreproduccion);
+VALUES (unidreproduccion,unidcliente,unidcancion,unmomreproduccion);
 END $$
 
 -- 2) Se pide hacer el SP ‘registrarCliente’ que reciba los datos del cliente. Es importante guardar encriptada la contraseña del cliente usando SHA256
