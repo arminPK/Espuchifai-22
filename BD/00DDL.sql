@@ -16,25 +16,12 @@ CREATE TABLE Cliente
     PRIMARY KEY (idcliente)
 );
 
-CREATE TABLE Reproduccion
+CREATE TABLE Banda
 (
-    idreproduccion INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    idcliente INT NOT NULL,
-    idcancion TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    momreproduccion DATETIME NOT NULL,
-    PRIMARY KEY (idreproduccion),
-    CONSTRAINT fk_Reproduccion_idcliente FOREIGN KEY(idcliente) REFERENCES Cliente (idcliente),
-    CONSTRAINT fk_Reproduccion_idcancion FOREIGN KEY(idcancion) REFERENCES Cancion (idcancion)
-);
-
-CREATE TABLE Cancion
-(
-    idcancion TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    idbanda SMALLINT UNSIGNED NOT NULL,
     nombre VARCHAR(45) NOT NULL,
-    numorden INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    idalbum TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (idcancion),
-    CONSTRAINT fk_Cancion_idalbum FOREIGN KEY(idalbum) REFERENCES Album (idalbum)
+    fundacion YEAR NOT NULL,
+    PRIMARY KEY (idbanda)
 );
 
 CREATE TABLE Album
@@ -47,10 +34,23 @@ CREATE TABLE Album
     CONSTRAINT fk_Album_idbanda FOREIGN KEY(idbanda) REFERENCES Bandaa (idbanda)
 );
 
-CREATE TABLE Banda
+CREATE TABLE Cancion
 (
-    idbanda SMALLINT UNSIGNED NOT NULL,
+    idcancion TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(45) NOT NULL,
-    fundacion YEAR NOT NULL,
-    PRIMARY KEY (idbanda)
+    numorden INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    idalbum TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (idcancion),
+    CONSTRAINT fk_Cancion_idalbum FOREIGN KEY(idalbum) REFERENCES Album (idalbum)
+);
+
+CREATE TABLE Reproduccion
+(
+    idreproduccion INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    idcliente INT NOT NULL,
+    idcancion TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    momreproduccion DATETIME NOT NULL,
+    PRIMARY KEY (idreproduccion),
+    CONSTRAINT fk_Reproduccion_idcliente FOREIGN KEY(idcliente) REFERENCES Cliente (idcliente),
+    CONSTRAINT fk_Reproduccion_idcancion FOREIGN KEY(idcancion) REFERENCES Cancion (idcancion)
 );
