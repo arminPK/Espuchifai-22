@@ -54,10 +54,3 @@ CREATE TABLE Banda
     fundacion YEAR NOT NULL,
     PRIMARY KEY (idbanda)
 );
-(
-    idreproduccion INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    fundacion YEAR NOT NULL,
-    idBanda SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY(idBanda),
-    FULLTEXT (nombre)
-);
