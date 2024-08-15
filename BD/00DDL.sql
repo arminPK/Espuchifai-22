@@ -29,6 +29,7 @@ CREATE TABLE Album
     idalbum TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(45) NOT NULL,
     lanzamiento DATE NOT NULL,
+    cantidad INT NOT NULL,
     idbanda SMALLINT UNSIGNED NOT NULL,
     PRIMARY KEY (idalbum),
     CONSTRAINT fk_Album_idbanda FOREIGN KEY(idbanda) REFERENCES Banda (idbanda)
@@ -38,7 +39,8 @@ CREATE TABLE Cancion
 (
     idcancion TINYINT UNSIGNED NOT NULL,
     nombre VARCHAR(45) NOT NULL,
-    numorden INT UNSIGNED NOT NULL,
+    numorden INT UNDESIGNED NOT NULL,
+    cantidad INT UNDESIGNED NOT NULL,
     idalbum TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (idcancion),
     CONSTRAINT fk_Cancion_idalbum FOREIGN KEY(idalbum) REFERENCES Album (idalbum)
