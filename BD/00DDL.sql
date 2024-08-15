@@ -39,8 +39,8 @@ CREATE TABLE Cancion
 (
     idcancion TINYINT UNSIGNED NOT NULL,
     nombre VARCHAR(45) NOT NULL,
-    numorden INT UNDESIGNED NOT NULL,
-    cantidad INT UNDESIGNED NOT NULL,
+    numorden INT UNSIGNED NOT NULL,
+    cantidad INT UNSIGNED NOT NULL,
     idalbum TINYINT UNSIGNED NOT NULL,
     PRIMARY KEY (idcancion),
     CONSTRAINT fk_Cancion_idalbum FOREIGN KEY(idalbum) REFERENCES Album (idalbum)
