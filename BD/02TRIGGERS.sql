@@ -9,7 +9,7 @@ FOR EACH ROW
 BEGIN
     UPDATE Cancion
     SET cantidad = cantidad + 1
-    WHERE idCancion = new.idCancion;
+    WHERE idcancion = new.idcancion;
 END $$
 
 -- 2) Cada vez que se actualiza el contador de la canción en N reproducciones, se incrementa el contador del álbum también en N.
@@ -23,6 +23,6 @@ BEGIN
     IF (NEW.cantidad > OLD.cantidad) THEN
     UPDATE Album
     SET cantidad = cantidad + 1
-    WHERE idAlbum = new.idAlbum;
+    WHERE idalbum = new.idalbum;
     END IF;
 END $$ 
