@@ -3,7 +3,7 @@ USE Espuchifai ;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaBanda $$
-CREATE PROCEDURE altaBanda (unnombre VARCHAR(45),unafundacion YEAR,OUT unidBanda SMALLINT UNSIGNED)
+CREATE PROCEDURE altaBanda (out unidbanda unnombre VARCHAR(45),unafundacion YEAR,OUT unidBanda SMALLINT UNSIGNED)
 BEGIN
 INSERT INTO Banda (nombre, fundacion, idBanda)
 VALUES (unnombre,unafundacion,unidBanda);
