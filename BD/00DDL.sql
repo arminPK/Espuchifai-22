@@ -22,7 +22,7 @@ CREATE TABLE Reproduccion
     idcliente INT NOT NULL,
     idcancion TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
     momreproduccion DATETIME NOT NULL,
-    PRIMARY KEY (idreproduccion)
+    PRIMARY KEY (idreproduccion),
     CONSTRAINT fk_Reproduccion_idcliente FOREIGN KEY(idcliente) REFERENCES Cliente (idcliente),
     CONSTRAINT fk_Reproduccion_idcancion FOREIGN KEY(idcancion) REFERENCES Cancion (idcancion)
 );
