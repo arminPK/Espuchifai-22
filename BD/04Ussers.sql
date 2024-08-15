@@ -11,9 +11,9 @@ GRANT INSERT, UPDATE ON Espuchifai.Cancion TO 'Administrador'@'LocalHost';
 
 DROP USER IF EXISTS 'Banda'@'%';
 CREATE USER 'Banda'@'%' IDENTIFIED BY 'passBanda';
-GRANT INSERT ON Espuchifai.Album TO 'Banda'@'&';
-GRANT INSERT ON Espuchifai.Cancion TO 'Banda'@'&';
-GRANT SELECT ON Espuchifai.Reproduccion TO 'Banda'@'&';
+GRANT INSERT ON Espuchifai.Album TO 'Banda'@'%';
+GRANT INSERT ON Espuchifai.Cancion TO 'Banda'@'%';
+GRANT SELECT ON Espuchifai.Reproduccion TO 'Banda'@'%';
 
 DROP USER IF EXISTS 'Cliente'@'%';
 CREATE USER 'Cliente'@'%' IDENTIFIED BY 'passCliente';
