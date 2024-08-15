@@ -11,7 +11,7 @@ END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaAlbum $$
-CREATE PROCEDURE altaAlbum (OUT unidalbum TINYINT UNSIGNED,unnombre VARCHAR(45),unlanzamiento DATE,unidbanda SMALLINT UNSIGNED) 
+CREATE PROCEDURE altaAlbum (unidalbum TINYINT UNSIGNED,unnombre VARCHAR(45),unlanzamiento DATE,unidbanda SMALLINT UNSIGNED) 
 BEGIN
 INSERT INTO Album (idalbum,nombre,lanzamiento,idbanda,cantidad)
 VALUES (unidalbum,unnombre,unlanzamiento,unidbanda,0);
