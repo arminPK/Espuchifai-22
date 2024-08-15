@@ -26,7 +26,7 @@ CREATE TABLE Banda
 
 CREATE TABLE Album
 (
-    idalbum TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    idalbum TINYINT UNSIGNED NOT NULL,
     nombre VARCHAR(45) NOT NULL,
     lanzamiento DATE NOT NULL,
     cantidad INT NOT NULL,
@@ -41,14 +41,14 @@ CREATE TABLE Cancion
     nombre VARCHAR(45) NOT NULL,
     numorden INT UNDESIGNED NOT NULL,
     cantidad INT UNDESIGNED NOT NULL,
-    idalbum TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    idalbum TINYINT UNSIGNED NOT NULL,
     PRIMARY KEY (idcancion),
     CONSTRAINT fk_Cancion_idalbum FOREIGN KEY(idalbum) REFERENCES Album (idalbum)
 );
 
 CREATE TABLE Reproduccion
 (
-    idreproduccion INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    idreproduccion INT UNSIGNED NOT NULL,
     idcliente INT NOT NULL,
     idcancion TINYINT UNSIGNED NOT NULL,
     momreproduccion DATETIME NOT NULL,
