@@ -1,10 +1,10 @@
 -- Active: 1646654372192@@127.0.0.1@3306@Eespuchifai
 
-DROP DATABASE IF EXISTS Eespuchifai;
+DROP DATABASE IF EXISTS Espuchifai;
 
-CREATE DATABASE Eespuchifai;
+CREATE DATABASE Espuchifai;
 
-USE Eespuchifai;
+USE Espuchifai;
 
 CREATE TABLE Cliente
 (
