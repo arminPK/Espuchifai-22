@@ -2,9 +2,9 @@
 
 DROP DATABASE IF EXISTS Eespuchifai;
 
-CREATE DATABASE Espuchifai;
+CREATE DATABASE Eespuchifai;
 
-USE Espuchifai;
+USE Eespuchifai;
 
 CREATE TABLE Cliente
 (
