@@ -15,7 +15,6 @@ CREATE PROCEDURE altaAlbum (unidalbum TINYINT UNSIGNED, unnombre VARCHAR(45),unl
 BEGIN
 INSERT INTO Album (idalbum,nombre,lanzamiento,idbanda,cantidad)
 VALUES (unidalbum,unnombre,unlanzamiento,unidbanda,0);
-SET unidAlbum = LAST_INSERT_ID();
 END $$ 
     
 DELIMITER $$
