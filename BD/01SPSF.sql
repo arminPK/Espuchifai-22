@@ -58,7 +58,7 @@ FROM Reproduccion
     INNER JOIN Cancion USING(idcancion)
     INNER JOIN Album USING(idalbum)
 WHERE idbanda = unidbanda
-AND reproduccion BETWEEN unInicio and unFin;
+AND reproduccion BETWEEN uninicio and unfin;
 
 RETURN resultado ;
 
@@ -70,9 +70,9 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS Buscar $$
 CREATE PROCEDURE Buscar (cadena VARCHAR(45)) BEGIN
-SELECT C.nombre,posicion,C.idAlbum,C.idCancion
+SELECT C.nombre,numorden,C.idalbum,C.idcancion
 FROM Cancion C
-JOIN Album USING (idAlbum)
+JOIN Album USING (idalbum)
 WHERE
 MATCH (C.nombre, A.nombre, B.nombre) AGAINST (cadena);
 END $$ 
