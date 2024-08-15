@@ -41,7 +41,7 @@ DROP PROCEDURE IF EXISTS registrarCliente $$
 CREATE PROCEDURE registrarCliente   (unidcliente INT UNSIGNED, unnombre VARCHAR(45), unapellido VARCHAR(45), unemail VARCHAR(45), unacontrasenia CHAR(60))
 BEGIN
 INSERT INTO Cliente (idcliente,nombre,apellido,email,contrasenia)
-VALUES (unidcliente,unnombre,unapellido,unemail,SHA2(unaContrasenia,256));
+VALUES (unidcliente,unnombre,unapellido,unemail,SHA2(unacontrasenia,256));
 END $$
     
 -- 3) Se pide hacer el SF ‘CantidadReproduccionesBanda’ que reciba por parámetro un identificador de banda y 2 fechas,se debe devolver la cantidad de reproducciones que tuvieron las canciones de esa banda entre esas 2 fechas (inclusive).
