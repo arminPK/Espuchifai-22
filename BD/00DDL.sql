@@ -31,7 +31,7 @@ CREATE TABLE Album
     lanzamiento DATE NOT NULL,
     idbanda SMALLINT UNSIGNED NOT NULL,
     PRIMARY KEY (idalbum),
-    CONSTRAINT fk_Album_idbanda FOREIGN KEY(idbanda) REFERENCES Bandaa (idbanda)
+    CONSTRAINT fk_Album_idbanda FOREIGN KEY(idbanda) REFERENCES Banda (idbanda)
 );
 
 CREATE TABLE Cancion
