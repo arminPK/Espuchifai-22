@@ -11,7 +11,7 @@ END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaAlbum $$
-CREATE PROCEDURE altaAlbum (unidalbum TINYINT UNSIGNED,unnombre VARCHAR(45),unlanzamiento DATE,unidbanda SMALLINT UNSIGNED) 
+CREATE PROCEDURE altaAlbum (unidalbum TINYINT UNSIGNED, unnombre VARCHAR(45),unlanzamiento DATE,unidbanda SMALLINT UNSIGNED) 
 BEGIN
 INSERT INTO Album (idalbum,nombre,lanzamiento,idbanda,cantidad)
 VALUES (unidalbum,unnombre,unlanzamiento,unidbanda,0);
@@ -38,7 +38,7 @@ END $$
 contrasenia
 DELIMITER $$
 DROP PROCEDURE IF EXISTS registrarCliente $$
-CREATE PROCEDURE registrarCliente   (unidcliente INT UNSIGNED,unmombre VARCHAR(45), unapellido VARCHAR(45), unemail VARCHAR(45), unacontrasenia CHAR(60))
+CREATE PROCEDURE registrarCliente   (unidcliente INT UNSIGNED, unnombre VARCHAR(45), unapellido VARCHAR(45), unemail VARCHAR(45), unacontrasenia CHAR(60))
 BEGIN
 INSERT INTO Cliente (idcliente,nombre,apellido,email,contrasenia)
 VALUES (unidcliente,unnombre,unapellido,unemail,SHA2(unaContrasenia,256));
