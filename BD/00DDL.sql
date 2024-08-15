@@ -42,7 +42,7 @@ CREATE TABLE Album
     idalbum TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(45) NOT NULL,
     lanzamiento DATE NOT NULL,
-    idbanda SAMALLINT UNSIGNED NOT NULL,
+    idbanda SMALLINT UNSIGNED NOT NULL,
     PRIMARY KEY (idalbum),
     CONSTRAINT fk_Album_idbanda FOREIGN KEY(idbanda) REFERENCES Bandaa (idbanda)
 );
