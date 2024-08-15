@@ -9,7 +9,7 @@ USE Espuchifai;
 CREATE TABLE Cliente
 (
     idcliente INT NOT NULL,
-    nommbre VARCHAR(45) NOT NULL,
+    nombre VARCHAR(45) NOT NULL,
     apellido VARCHAR(45) NOT NULL,
     email VARCHAR(60) NOT NULL,
     contrasenia CHAR(64) NOT NULL,
