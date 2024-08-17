@@ -15,7 +15,6 @@ END $$
 -- 2) Cada vez que se actualiza el contador de la canción en N reproducciones, se incrementa el contador del álbum también en N.
 
 DELIMITER $$
-
 DROP TRIGGER IF EXISTS AfInsCancion $$
 CREATE TRIGGER AfInsCancion AFTER UPDATE ON Cancion 
 FOR EACH ROW 
