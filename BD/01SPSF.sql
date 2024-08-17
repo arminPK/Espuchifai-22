@@ -197,3 +197,133 @@ BEGIN
         A.nombre LIKE CONCAT('%', cadena, '%') OR
         B.nombre LIKE CONCAT('%', cadena, '%');
 END $$
+
+
+
+
+
+
+USE espuchifai;
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS altaBanda $$
+CREATE PROCEDURE altaBanda (
+    unidbanda SMALLINT UNSIGNED, 
+    unnombre VARCHAR(45), 
+    unafundacion YEAR
+)
+BEGIN
+    INSERT INTO Banda (idbanda, nombre, fundacion)
+    VALUES (unidbanda, unnombre, unafundacion);
+END $$
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS altaAlbum $$
+CREATE PROCEDURE altaAlbum (
+    unidalbum TINYINT UNSIGNED, 
+    unnombre VARCHAR(45),
+    unlanzamiento DATE,
+    unidbanda SMALLINT UNSIGNED
+)
+BEGIN
+    INSERT INTO Album (idalbum, nombre, lanzamiento, idbanda, cantidad)
+    VALUES (unidalbum, unnombre, unlanzamiento, unidbanda, 0);
+END $$
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS altaCancion $$
+CREATE PROCEDURE altaCancion (
+    unidcancion TINYINT UNSIGNED,
+    unnombre VARCHAR(45),
+    unnumorden INT UNSIGNED,
+    unidalbum TINYINT UNSIGNED
+)
+BEGIN
+    INSERT INTO Cancion (idcancion, nombre, numorden, idalbum, cantidad)
+    VALUES (unidcancion, unnombre, unnumorden, unidalbum, 0);
+END $$
+
+DELIMITER %%
+
+DROP PROCEDURE IF EXISTS Reproducir $$
+CREA TEPROCEDURE Reproducir (
+    unidreproduccion INT UNSIGNED,
+    unidcliente INT UNSIGNED,
+    unidcancion TINYINT UNSIGNED,
+    unmomreproduccion DATETIME
+)
+BEGININSERT INTO Reproduccion (idreproduccion, idcliente, idcancion, momreproduccion)
+    VALUES (unidreproduccion, unidcliente, unidcancion, unmomreproduccion);
+END $$
+
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS registrarCliente $$
+CREATE PROCEDURE registrarCliente (
+    unidcliente INT UNSIGNED,
+    unnombre VARCHAR(45),
+    unapellido VARCHAR(45),
+    unemail VARCHAR(45),
+    unacontrasenia CHAR(60)
+)
+BEGIN
+    INSERT INTO Cliente (idcliente, nombre, apellido, email, contrasenia)
+    VALUES (unidcliente, unnombre, unapellido, unemail, SHA2(unacontrasenia, 256));
+END $$
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS registrarCliente $$
+CREATE PROCEDURE registrarCliente (
+    unidcliente INT UNSIGNED,
+    unnombre VARCHAR(45),
+    unapellido VARCHAR(45),
+    unemail VARCHAR(45),
+    unacontrasenia CHAR(60)
+)
+BEGIN
+    INSERT INTO Cliente (idcliente, nombre, apellido, email, contrasenia)
+    VALUES (unidcliente, unnombre, unapellido, unemail, SHA2(unacontrasenia, 256));
+END $$
+
+
+DELIMITER $$
+
+DROP FUNCTION IF EXISTS CantidadReproduccionesBanda $$
+CREATE FUNCTION CantidadReproduccionesBanda (
+    unidbanda SMALLINT UNSIGNED,
+    uninicio DATETIME,
+    unfin DATETIME
+) RETURNS INT 
+READS SQL DATA
+BEGIN 
+    DECLARE resultado INT;
+
+    SELECT COUNT(*) INTO resultado
+    FROM Reproduccion R
+    INNER JOIN Cancion C ON R.idcancion = C.idcancion
+    INNER JOIN Album A ON C.idalbum = A.idalbum
+    WHERE A.idbanda = unidbanda
+    AND R.momreproduccion BETWEEN uninicio AND unfin;
+
+    RETURN resultado;
+END $$
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS Buscar $$
+CREATE PROCEDURE Buscar (cadena VARCHAR(45))
+BEGIN
+    SELECT C.nombre AS Cancion, C.numorden, C.idalbum, C.idcancion, A.nombre AS Album, B.nombre AS Banda
+    FROM Cancion C
+    JOIN Album A ON C.idalbum = A.idalbum
+    JOIN Banda B ON A.idbanda = B.idbanda
+    WHERE
+        C.nombre LIKE CONCAT('%', cadena, '%') OR
+        A.nombre LIKE CONCAT('%', cadena, '%') OR
+        B.nombre LIKE CONCAT('%', cadena, '%');
+END $$
