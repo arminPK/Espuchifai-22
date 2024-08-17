@@ -3,8 +3,8 @@ USE Espuchifai ;
 /* 1) Cada vez que se inserta una reproducción, se incrementa el contador de reproducciones de la canción en uno.*/
 
 DELIMITER $$
-DROP TRIGGER IF EXISTS BefInsReproduccion $$
-CREATE TRIGGER BefInsReproduccion BEFORE INSERT ON Reproduccion 
+DROP TRIGGER IF EXISTS AfInsReproduccion $$
+CREATE TRIGGER AfInsReproduccion AFTER INSERT ON Reproduccion 
 FOR EACH ROW 
 BEGIN
     UPDATE Cancion
@@ -16,8 +16,8 @@ END $$
 
 DELIMITER $$
 
-DROP TRIGGER IF EXISTS BefInsCancion $$
-CREATE TRIGGER BefInsCancion BEFORE UPDATE ON Cancion 
+DROP TRIGGER IF EXISTS AfInsCancion $$
+CREATE TRIGGER AfInsCancion AFTER UPDATE ON Cancion 
 FOR EACH ROW 
 BEGIN 
     IF (NEW.cantidad > OLD.cantidad) THEN
