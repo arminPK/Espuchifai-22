@@ -15,9 +15,9 @@ CALL registrarCliente(3, 'David', 'Gilmour', 'david@example.com', 'pinkfloyd1973
 CALL Reproducir(1, 1, 1, '2024-08-15 10:00:00');
 CALL Reproducir(2, 1, 2, '2024-08-15 14:00:00');
 CALL Reproducir(3, 1, 3, '2024-08-16 09:30:00');
-SELECT CantidadReproduccionesBanda(1, '2024-01-01 00:00:00', '2024-12-31 23:59:59') AS Reproducciones;
-SELECT CantidadReproduccionesBanda(2, '2024-01-01 00:00:00', '2024-12-31 23:59:59') AS Reproducciones;
-SELECT CantidadReproduccionesBanda(3, '2024-01-01 00:00:00', '2024-12-31 23:59:59') AS Reproducciones;
+SELECT CantidadReproduccionesBanda(1, '2024-01-01 00:00:00', '2024-12-31 23:59:59');
+SELECT CantidadReproduccionesBanda(2, '2024-01-01 00:00:00', '2024-12-31 23:59:59');
+SELECT CantidadReproduccionesBanda(3, '2024-01-01 00:00:00', '2024-12-31 23:59:59');
 CALL Buscar('Come');
 CALL Buscar('Money');
-CALL Buscar('Love');
+CALL Buscar('Bohemian Rhapsody');
