@@ -13,7 +13,7 @@ public class ClienteTest
     [Fact]
     public void AltaCliente()
     {
-        var cliente = new Cliente(4, 'gonzalo', 'arancibia', 'gonzaloarancibia@gmail.com', 'gonzi');
+        var cliente = new Cliente(4, "gonzalo", "arancibia", "gonzaloarancibia@gmail.com", "gonzi");
         Ado.AltaCliente(cliente);
         Assert.Equal(4, cliente.idcliente);
     }
@@ -36,7 +36,7 @@ public class ClienteTest
     [Fact]
     public void ObtenerBuscarCliente()
     {
-        var cliente = Ado.BuscarCliente('gonzaloarancibia@gmail.com', 'gonzi');
-        Assert.Equal('gonzaloarancibia@gmail.com', cliente.email);
+        var cliente = Ado.BuscarCliente("gonzaloarancibia@gmail.com", "gonzi");
+        Assert.Equal("gonzaloarancibia@gmail.com", cliente.email);
     }
 }

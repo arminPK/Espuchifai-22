@@ -14,12 +14,12 @@ public class CancionTest
     [Fact]
     public void AltaCancion()
     {
-        var cancion = new Cancion(2, 'morfSDASDASDeo', 2, 2);
+        var cancion = new Cancion(2, "morfSDASDASDeo", 2, 2);
         Ado.AltaCancion(cancion);
         Assert.Equal(2, cancion.idcancion);
     }
     [Theory]
-    [InlineData(1, 'morfeo', 1, 1)]
+    [InlineData(1, "morfeo", 1, 1)]
     public void TraerCanciones(byte idcancion, string nombre, int numorden, byte idalbum)
     {
         var canciones = Ado.ObtenerCanciones();

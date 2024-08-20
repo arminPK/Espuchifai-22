@@ -14,12 +14,12 @@ public class BandaTest
     [Fact]
     public void AltaBanda()
     {
-        var banda = new Banda(4, 'gasafs', 1260);
-        Ado.AltaAlbum(album);
-        Assert.Equal(4, album.idalbum);
+        var banda = new Banda(4, "gasafs", 1260);
+        Ado.AltaBanda(banda);
+        Assert.Equal(4, banda.idbanda);
     }
     [Theory]
-    [InlineData(1, 'insanos', 1960)]
+    [InlineData(1, "insanos", 1960)]
     public void TraerBandas(short idbanda, string nombre, int fundacion)
     {
         var bandas = Ado.ObtenerBandas();

@@ -14,13 +14,13 @@ public class ReproduccionTest
     [Fact]
     public void AltaReproduccion()
     {
-        var reproduccion = new Reproduccion(2, 4, 2, '2022-01-11 10:00:00');
+        var reproduccion = new Reproduccion(2, 4, 2, DateTime.Today);
         Ado.AltaReproduccion(reproduccion);
         Assert.Equal(2, reproduccion.idreproduccion);
     }
     [Theory]
-    [InlineData(1, 1, 1, '2024-08-11 10:00:00')]
-    public void TraerReproducciones(int idreproduccion, int idcliente, byte idcancion, datetime momreproduccion)
+    [InlineData(1, 1, 1, "2024-08-11 10:00:00")]
+    public void TraerReproducciones(int idreproduccion, int idcliente, byte idcancion, DateTime momreproduccion)
     {
         var reproducciones = Ado.ObtenerReproducciones();
         Assert.Contains(reproducciones, r => r.idreproduccion == idreproduccion && r.idcliente == idcliente && r.idcancion == idcancion && r.momreproduccion == momreproduccion);
