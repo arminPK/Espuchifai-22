@@ -9,12 +9,12 @@ namespace Espuchifai.Core
     {   
         public byte idalbum { get; set; }       
         public string nombre { get; set; }
-        public datetime lanzamiento { get; set; }
+        public DateTime lanzamiento { get; set; }
         public int cantidad { get; set; }
         public short idbanda { get; set; }
-        public Album(byte idalbum, string nombre, datetime lanzamiento, int cantidad, short idbanda)
+        public Album(byte idalbum, string nombre, DateTime lanzamiento, short idbanda)
         {   
-            this.idcancion = idcancion;
+            this.idalbum = idalbum;
             this.nombre = nombre;
             this.lanzamiento = lanzamiento;
             this.cantidad = cantidad;
@@ -23,6 +23,10 @@ namespace Espuchifai.Core
         public Album()
         {
 
+        }
+
+        public Album(int v1, string v2, string v3, int v4)
+        {
         }
     }
 }
