@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Espuchifai.Core
         public int numorden { get; set; }
         public int cantidad { get; set; }
         public byte idalbum { get; set; }
-        public Cancion(byte idcancion, string nombre, int numorden, int cantidad, byte idalbum)
+        public Cancion(byte idcancion, string nombre, int numorden, byte idalbum)
         {   
             this.idcancion = idcancion;
             this.nombre = nombre;
@@ -20,9 +21,13 @@ namespace Espuchifai.Core
             this.cantidad = cantidad;
             this.idalbum = idalbum;
         }
-        public Cancion()
+        public Cancion(int v)
         {
 
+        }
+
+        public Cancion(int v1, char v2, int v3, int v4)
+        {
         }
     }
 }
