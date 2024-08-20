@@ -12,14 +12,8 @@ namespace Mapeador
             Tabla = "Cancion";
         }
         public override Cancion ObjetoDesdeFila(DataRow fila)
-        => new Cancion()
-        {
-            idcancion = Convert.ToByte(fila["idcancion"]),
-            nombre = Convert.ToString(fila["nombre"]),
-            numorden = Convert.ToInt32(fila["numorden"]),
-            cantidad = Convert.ToInt32(fila["cantidad"]),
-            idalbum = Convert.ToByte(fila["idalbum"])
-        };
+        => new Cancion (idcancion:Convert.ToByte(fila["idcancion"]), nombre:Convert.ToString(fila["nombre"]), numorden:Convert.ToInt32(fila["numorden"]), idalbum:Convert.ToByte(fila["idalbum"]));
+        
         public void AltaCancion(Cancion cancion)
         => EjecutarComandoCon("AltaCancion", ConfigurarAltaCancion, PostAltaCancion, cancion);
 

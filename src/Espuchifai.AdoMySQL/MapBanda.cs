@@ -16,7 +16,7 @@ public class MapBanda : Mapeador<Banda>
     => new Banda()
     {
         idbanda = Convert.ToInt16(fila["idbanda"]),
-        nombre = Convert.ToString(fila["nombre"])
+        nombre = Convert.ToString(fila["nombre"]),
         fundacion = Convert.ToInt32(fila["fundacion"])
     };
     public void AltaBanda(Banda banda)
@@ -59,3 +59,5 @@ public class MapBanda : Mapeador<Banda>
     }
 
     public List<Banda> ObtenerBandas() => ColeccionDesdeTabla();
+}
+    

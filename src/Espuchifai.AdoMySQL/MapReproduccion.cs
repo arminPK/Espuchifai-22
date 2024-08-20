@@ -12,13 +12,8 @@ namespace Mapeador
             Tabla = "Reproduccion";
         }
         public override Reproduccion ObjetoDesdeFila(DataRow fila)
-        => new Reproduccion()
-        {
-            idreproduccion = Convert.ToInt32(fila["idreproduccion"]),
-            idcliente = Convert.ToInt32(fila["idcliente"]),
-            idcancion = Convert.ToByte(fila["idcancion"]),
-            momreproduccion = Convert.ToDateTime(fila["momreproduccion"]),
-        };
+        => new Reproduccion(idreproduccion:Convert.ToInt32(fila["idreproduccion"]),idcliente:Convert.ToInt32(fila["idcliente"]),idcancion:Convert.ToByte(fila["idcancion"]), momreproduccion:Convert.ToDateTime(fila["momreproduccion"]) );
+
         public void AltaReproduccion(Reproduccion reproduccion)
         => EjecutarComandoCon("AltaReproduccion", ConfigurarAltaReproduccion, PostAltaReproduccion, reproduccion);
 
@@ -33,7 +28,7 @@ namespace Mapeador
 
             BP.CrearParametro("unidcliente")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
-            .SetValor(Reproduccion.idcliente)
+            .SetValor(reproduccion.idcliente)
             .AgregarParametro();
 
             BP.CrearParametro("unidcancion")

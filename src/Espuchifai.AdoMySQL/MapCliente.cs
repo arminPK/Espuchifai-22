@@ -44,7 +44,7 @@ namespace Mapeador
 
             BP.CrearParametro("unemail")
             .SetTipoVarchar(50)
-            .SetValor(cliente.emailail)
+            .SetValor(cliente.email)
             .AgregarParametro();
 
             BP.CrearParametro("unacontrasenia")
