@@ -11,7 +11,7 @@ namespace Espuchifai.Core
         public int idcliente { get; set; }
         public byte idcancion { get; set; }
         public DateTime momreproduccion { get; set; }
-        public Reproduccion(int idreproduccion, int idcliente, int v, byte idcancion, DateTime momreproduccion)
+        public Reproduccion(int idreproduccion, int idcliente, byte idcancion, DateTime momreproduccion)
         {   
             this.idreproduccion = idreproduccion;
             this.idcliente = idcliente;
