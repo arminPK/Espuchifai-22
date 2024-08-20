@@ -1,4 +1,4 @@
-namespace Cine.Core.Ado;
+namespace Espuchifai.Core.Ado;
 
 public interface IAdo
 {
