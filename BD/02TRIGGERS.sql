@@ -15,9 +15,8 @@ END $$
 -- 2) Cada vez que se actualiza el contador de la canción en N reproducciones, se incrementa el contador del álbum también en N.
 
 DELIMITER $$
-
-CREATE TRIGGER incrementaReproduccionAlbum
-AFTER UPDATE ON Cancion
+DROP TRIGGER IF EXISTS incrementaReproduccionAlbum $$
+CREATE TRIGGER incrementaReproduccionAlbum AFTER UPDATE ON Cancion
 FOR EACH ROW
 BEGIN
     DECLARE incremento INT;
