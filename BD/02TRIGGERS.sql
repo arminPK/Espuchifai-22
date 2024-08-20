@@ -15,13 +15,18 @@ END $$
 -- 2) Cada vez que se actualiza el contador de la canción en N reproducciones, se incrementa el contador del álbum también en N.
 
 DELIMITER $$
-DROP TRIGGER IF EXISTS AfInsCancion $$
-CREATE TRIGGER AfInsCancion AFTER UPDATE ON Cancion 
-FOR EACH ROW 
-BEGIN 
-    IF (NEW.cantidad > OLD.cantidad) THEN
-    UPDATE Album
-    SET cantidad = cantidad + 1
-    WHERE idalbum = new.idalbum;
+
+CREATE TRIGGER incrementaReproduccionAlbum
+AFTER UPDATE ON Cancion
+FOR EACH ROW
+BEGIN
+    DECLARE incremento INT;
+    SET incremento = NEW.cantidad - OLD.cantidad;
+    IF incremento > 0 THEN
+        UPDATE Album
+        SET cantidad = cantidad + incremento
+        WHERE idalbum = NEW.idalbum;
     END IF;
-END $$ 
+END $$
+
+DELIMITER ;
