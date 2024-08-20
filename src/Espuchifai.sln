@@ -1,0 +1,37 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Espuchifai.Core", "Espuchifai.Core\Espuchifai.Core.csproj", "{AEB97758-3502-4E05-BDC0-03B05F73CE2C}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Espuchifai.AdoMySQL", "Espuchifai.AdoMySQL\Espuchifai.AdoMySQL.csproj", "{1318DCAE-274A-4841-B41E-129E64EB3316}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Espuchifai.AdoTest", "Espuchifai.AdoTest\Espuchifai.AdoTest.csproj", "{26EE2273-8CAA-426A-80EB-896E5C2D737C}"
+EndProject
+
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Any CPU = Debug|Any CPU
+        Release|Any CPU = Release|Any CPU
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {AEB97758-3502-4E05-BDC0-03B05F73CE2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {AEB97758-3502-4E05-BDC0-03B05F73CE2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {AEB97758-3502-4E05-BDC0-03B05F73CE2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {AEB97758-3502-4E05-BDC0-03B05F73CE2C}.Release|Any CPU.Build.0 = Release|Any CPU
+        {1318DCAE-274A-4841-B41E-129E64EB3316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {1318DCAE-274A-4841-B41E-129E64EB3316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {1318DCAE-274A-4841-B41E-129E64EB3316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {1318DCAE-274A-4841-B41E-129E64EB3316}.Release|Any CPU.Build.0 = Release|Any CPU
+        {26EE2273-8CAA-426A-80EB-896E5C2D737C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {26EE2273-8CAA-426A-80EB-896E5C2D737C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {26EE2273-8CAA-426A-80EB-896E5C2D737C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {26EE2273-8CAA-426A-80EB-896E5C2D737C}.Release|Any CPU.Build.0 = Release|Any CPU
+    EndGlobalSection
+EndGlobal
